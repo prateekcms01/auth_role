@@ -14,14 +14,9 @@ router.get("/admin", authenticateJWT, authorizeRole(["admin"]), adminAccess);
 router.get(
   "/team-lead",
   authenticateJWT,
-  authorizeRole(["admin", "team_lead"]),
+  authorizeRole(["team_lead"]),
   teamLeadAccess
 );
-router.get(
-  "/agent",
-  authenticateJWT,
-  authorizeRole(["admin", "team_lead", "agent"]),
-  agentAccess
-);
+router.get("/agent", authenticateJWT, authorizeRole(["agent"]), agentAccess);
 
 module.exports = router;
